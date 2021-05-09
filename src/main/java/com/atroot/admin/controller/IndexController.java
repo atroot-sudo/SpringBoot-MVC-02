@@ -38,12 +38,13 @@ public class IndexController {
     @GetMapping("/main.html")
     public String mainPage(User user, Model model, HttpSession session) {
         //判断登录状态，防止直接访问
-        if (session.getAttribute("loginUser") != null) {
-            return "main";
-        } else {
-            model.addAttribute("msg", "未登录！");
-            return "login";
-        }
+//        if (session.getAttribute("loginUser") != null) {
+//            return "main";
+//        } else {
+//            model.addAttribute("msg", "未登录！");
+//            return "login";
+//        }
+        return "main";
     }
 
 
