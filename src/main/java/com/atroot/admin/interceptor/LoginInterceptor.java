@@ -38,8 +38,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        log.info("拦截请求是{}",request.getRequestURI());
-        log.info("现在执行的是：{preHandle}");
+//        log.info("拦截请求是{}",request.getRequestURI());
+//        log.info("现在执行的是：{preHandle}");
         HttpSession session = request.getSession();
         Object loginUser = session.getAttribute("loginUser");
         if (loginUser != null) {
@@ -62,7 +62,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.info("现在执行的是：{postHandle}");
+//        log.info("现在执行的是：{postHandle}");
     }
 
     /**
@@ -76,7 +76,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.info("现在执行的是：{afterCompletion}");
+//        log.info("现在执行的是：{afterCompletion}");
 
     }
 }
