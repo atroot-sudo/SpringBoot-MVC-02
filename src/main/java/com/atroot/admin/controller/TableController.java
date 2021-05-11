@@ -1,6 +1,7 @@
 package com.atroot.admin.controller;
 
 import com.atroot.admin.bean.User;
+import com.atroot.admin.exception.UserTooManyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,10 @@ public class TableController {
     @GetMapping("/dynamic_table")
     public String dynamic_table(Model model) {
         List<User> users = Arrays.asList(new User("zxc", "123456"), new User("zhangsan", "123456"));
-        model.addAttribute("users",users);
+//        if (users.size() >= 1) {
+//            throw new UserTooManyException("用户太多啦！");
+//        }
+        model.addAttribute("users", users);
 
         return "table/dynamic_table";
     }

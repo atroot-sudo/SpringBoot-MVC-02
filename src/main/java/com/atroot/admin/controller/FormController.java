@@ -21,7 +21,10 @@ import java.io.IOException;
 @Slf4j
 public class FormController {
     @GetMapping("/form_layouts")
-    public String form_layouts() {
+    public String form_layouts(
+//            @RequestParam int a 用于测试异常处理
+    ) {
+//        int b = a / 0; 用于测试异常处理
         return "form/form_layouts";
     }
 
