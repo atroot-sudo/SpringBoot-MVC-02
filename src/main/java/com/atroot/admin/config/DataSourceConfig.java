@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @author atroot@126.com  @ZYD
  * @create 2021.5.14 18:23
  */
-@Deprecated
+@Deprecated //标注为过时
 //@Configuration
 public class DataSourceConfig {
 
