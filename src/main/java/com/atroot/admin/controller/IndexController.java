@@ -1,25 +1,38 @@
 package com.atroot.admin.controller;
 
 import com.atroot.admin.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
 /**
  * Description: Index的controller
-
+ *
  * @author atroot@126.com  @ZYD
  * @create 2021.5.7 8:56
  */
 @Controller
 public class IndexController {
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
     @GetMapping({"/", "/login"})
     public String loginPage() {
         return "login";
+    }
+
+    @ResponseBody
+    @GetMapping("/sql")
+    public String query() {
+        Integer integer = jdbcTemplate.queryForObject("select count(*) from user", int.class);
+        return integer.toString();
     }
 
     @PostMapping("/login")
