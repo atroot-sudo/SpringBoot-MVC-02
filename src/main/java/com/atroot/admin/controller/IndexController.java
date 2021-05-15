@@ -1,6 +1,10 @@
 package com.atroot.admin.controller;
 
+import com.atroot.admin.bean.Account;
+import com.atroot.admin.bean.City;
 import com.atroot.admin.bean.User;
+import com.atroot.admin.service.AccountService;
+import com.atroot.admin.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -8,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +27,32 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    AccountService accountService;
+
+    @Autowired
+    CityService cityService;
+
+
+    @ResponseBody
+    @PostMapping("/insert")
+    public City insert(City city){
+        cityService.insert(city);
+        return city;
+    }
+
+    @ResponseBody
+    @GetMapping("/getCity")
+    public City getCityById(@RequestParam("id") Long id) {
+        return cityService.getCityById(id);
+    }
+
+    @ResponseBody
+    @GetMapping("/getAcc")
+    public Account getUser(@RequestParam("id") int id) {
+        return accountService.getAccountById(id);
+    }
 
     @GetMapping({"/", "/login"})
     public String loginPage() {

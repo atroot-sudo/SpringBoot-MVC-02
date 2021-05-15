@@ -18,8 +18,8 @@ import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
  * @author atroot@126.com  @ZYD
  * @create 2021.5.11 20:41
  */
-@Component
-@Order(value = HIGHEST_PRECEDENCE)   //设置优先级为最高
+//@Component
+//@Order(value = HIGHEST_PRECEDENCE)   //设置优先级为最高
 public class CustomerHandlerExceptionResolver implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {

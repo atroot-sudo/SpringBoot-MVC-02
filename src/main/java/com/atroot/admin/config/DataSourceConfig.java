@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @author atroot@126.com  @ZYD
  * @create 2021.5.14 18:23
  */
-@Deprecated //标注为过时
+@Deprecated
 //@Configuration
 public class DataSourceConfig {
 
@@ -35,10 +35,12 @@ public class DataSourceConfig {
 //        druidDataSource.setUrl("");
 //        druidDataSource.setUsername("");
         druidDataSource.setFilters("stat,wall");
-        
         return druidDataSource;
     }
-    //配置druid的监控页功能 配置一个Servlet到容器中
+
+    /**
+     * 配置druid的监控页功能 配置一个Servlet到容器中
+     */
     @Bean
     public ServletRegistrationBean statViewServlet(){
         StatViewServlet statViewServlet = new StatViewServlet();
@@ -47,7 +49,12 @@ public class DataSourceConfig {
         servletRegistrationBean.addInitParameter("loginPassword","admin");
         return servletRegistrationBean;
     }
-    //配置WebStatFilter的监控功能
+
+
+    /**
+     * 配置WebStatFilter的监控功能
+     * @return FilterRegistrationBean
+     */
     @Bean
     public FilterRegistrationBean webStatFilter(){
         WebStatFilter webStatFilter = new WebStatFilter();
