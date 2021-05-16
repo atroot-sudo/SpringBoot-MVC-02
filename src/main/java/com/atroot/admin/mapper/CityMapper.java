@@ -1,7 +1,9 @@
 package com.atroot.admin.mapper;
 
 import com.atroot.admin.bean.City;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -16,4 +18,8 @@ public interface CityMapper {
     public City getCityById(Long id);
 
     public void insert(City city);
+
+//    @Insert("insert into city (name,state,country) values (#{name},#{state},#{country})")
+//    @Options(useGeneratedKeys = true,keyProperty = "id")
+//    public void insert(City city);
 }

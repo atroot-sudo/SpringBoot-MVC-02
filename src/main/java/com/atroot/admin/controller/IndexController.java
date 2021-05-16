@@ -10,10 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,10 +31,9 @@ public class IndexController {
     @Autowired
     CityService cityService;
 
-
     @ResponseBody
     @PostMapping("/insert")
-    public City insert(City city){
+    public City insert(City city) {
         cityService.insert(city);
         return city;
     }
