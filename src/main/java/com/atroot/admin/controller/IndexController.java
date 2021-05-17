@@ -6,11 +6,16 @@ import com.atroot.admin.bean.User;
 import com.atroot.admin.service.AccountService;
 import com.atroot.admin.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.data.redis.core.StringRedisTemplate;
+//import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,6 +35,9 @@ public class IndexController {
 
     @Autowired
     CityService cityService;
+
+//    @Autowired
+//    StringRedisTemplate redisTemplate;
 
     @ResponseBody
     @PostMapping("/insert")
@@ -84,6 +92,14 @@ public class IndexController {
 //            model.addAttribute("msg", "未登录！");
 //            return "login";
 //        }
+
+//        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+//        String s = opsForValue.get("/main.html");
+//        String s1 = opsForValue.get("/sql");
+//        System.out.println(s);
+//        System.out.println(s1);
+//        model.addAttribute("mainCount", s);
+//        model.addAttribute("sqlCount", s1);
         return "main";
     }
 

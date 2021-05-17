@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.data.redis.connection.RedisConnectionFactory;
+//import org.springframework.data.redis.core.StringRedisTemplate;
+//import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -18,6 +21,12 @@ class SpringBootMvc02ApplicationTests {
 
     @Autowired
     UserMapper userMapper;
+
+//    @Autowired
+//    StringRedisTemplate redisTemplate;
+//
+//    @Autowired
+//    RedisConnectionFactory redisConnectionFactory;
 
     @Test
     void contextLoads() {
@@ -32,5 +41,14 @@ class SpringBootMvc02ApplicationTests {
 //    void findById(){
 //        User user = userMapper.selectById(2L);
 //        log.info("用户信息：{}",user);
+//    }
+
+//    @Test
+//    void testRedis(){
+//        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+//        valueOperations.set("hello","world");
+//        String hello = valueOperations.get("hello");
+//        log.warn("key hello 对应的 value是 {}",hello);
+//        log.error("redisConnectionFactory 的类型为 ： {}",redisConnectionFactory.getClass());
 //    }
 }

@@ -42,7 +42,13 @@ spring:
             update-allow: false
       #开启spring监控功能
       aop-patterns: com.atroot.admin.*
-#mybatis:
+#  redis:
+#    host: r-bp180i9z2urf1gh390pd.redis.rds.aliyuncs.com
+#    port: 6379
+#    password: zyd:zYd123456
+#    client-type: lettuce
+  #    redis://zyd:zYd123456@r-bp180i9z2urf1gh390pd.redis.rds.aliyuncs.com:6379
+  #mybatis:
   #  check-config-location: true
 #  config-location: classpath:mybatis/mybatis-config.xml
 #  mapper-locations: classpath:mybatis/mapper/*.xml
@@ -51,3 +57,14 @@ spring:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+management:
+  endpoints:
+    enabled-by-default: true
+
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+

@@ -1,13 +1,15 @@
 package com.atroot.admin.config;
 
 import com.atroot.admin.interceptor.LoginInterceptor;
+//import com.atroot.admin.interceptor.RedisInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Description:自定义拦截器
- *
+ * <p>
  * 1、编写一个拦截器实例HandlerInterceptor接口
  * 2、拦截器注册到容器中，并实现WebMvcConfigurer的addInterceptors
  * 3、指定拦截规则(如果是拦截所有的话，那么静态资源也会被拦截，可以使用精确拦截或者排除拦截项)
@@ -17,10 +19,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class AdminWebConfig implements WebMvcConfigurer {
+//    @Autowired
+//    RedisInterceptor redisInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/","/login","/css/**","/fonts/**","/images/**","/js/**");
+                .excludePathPatterns("/", "/login", "/css/**", "/fonts/**", "/images/**", "/js/**");
+//        registry.addInterceptor(redisInterceptor)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/", "/login", "/css/**", "/fonts/**", "/images/**", "/js/**");
     }
 }
